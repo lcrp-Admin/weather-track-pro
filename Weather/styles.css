@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #00b4d8, #0077b6);
+    min-height: 100vh;
+}
+
+nav {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#location-input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+}
+
+#search-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    background: #023e8a;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#search-btn:hover {
+    background: #03045e;
+}
+
+.weather-info {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+}
+
+.location {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.weather-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.temperature {
+    text-align: center;
+}
+
+.temperature h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.additional-info p {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* Add these styles to your existing CSS */
+#settings-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+#settings-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    min-width: 300px;
+}
+
+.settings-group {
+    margin: 20px 0;
+}
+
+.settings-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.settings-group select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#save-settings {
+    width: 100%;
+    padding: 10px;
+    background: #023e8a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#save-settings:hover {
+    background: #03045e;
+}

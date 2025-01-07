@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Tracking System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">WeatherTrack Pro</div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="support/support.html">Support</a>
+            <!-- Add this button in the nav-links div -->
+            <button id="settings-btn"><i class="fas fa-cog"></i> Settings</button>
+           </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="search-box">
+            <input type="text" id="location-input" placeholder="Enter city name" disabled>
+            <button id="search-btn" disabled><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="weather-info">
+            <div class="location">
+                <h2 id="city">City Name</h2>
+                <p id="date">Date</p>
+            </div>
+            
+            <div class="weather-details">
+                <div class="temperature">
+                    <h1 id="temp">--°C</h1>
+                    <img id="weather-icon" src="" alt="weather icon">
+                </div>
+                <div class="additional-info">
+                    <p>Humidity: <span id="humidity">--%</span></p>
+                    <p>Wind Speed: <span id="wind">-- km/h</span></p>
+                    <p>Condition: <span id="condition">--</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add this modal at the bottom of the body, before the closing body tag -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <h2>Settings</h2>
+            <div class="settings-group">
+                <label>Temperature Unit:</label>
+                <select id="temp-unit">
+                    <option value="fahrenheit">Fahrenheit (°F)</option>
+                    <option value="celsius">Celsius (°C)</option>
+                </select>
+            </div>
+            <div class="settings-group">
+                <label>Wind Speed Unit:</label>
+                <select id="wind-unit">
+                    <option value="mph">Miles per Hour (mph)</option>
+                    <option value="kph">Kilometers per Hour (km/h)</option>
+                </select>
+            </div>
+            <button id="save-settings">Save Settings</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

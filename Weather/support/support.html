@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Weather Tracking System</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="support.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">WeatherTrack Pro</div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="support.html" class="active">Support</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="support-content">
+            <h1>Support Center</h1>
+            <div class="support-form">
+                <input type="text" id="name" placeholder="Your Name">
+                <input type="email" id="email" placeholder="Your Email">
+                <select id="issue-type">
+                    <option value="">Select Issue Type</option>
+                    <option value="technical">Technical Issue</option>
+                    <option value="account">Account Issue</option>
+                    <option value="other">Other</option>
+                </select>
+                <textarea id="message" placeholder="Describe your issue"></textarea>
+                <button id="submit-btn">Submit Ticket</button>
+            </div>
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-items"></div>
+            </div>
+        </div>
+    </div>
+    <script src="support.js"></script>
+</body>
+</html>
