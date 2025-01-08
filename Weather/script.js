@@ -1,6 +1,4 @@
-const API_KEY = '4d8d029937b7d07d57c6a6b38fe2e75d';
-
-// DOM Elements
+const API_KEY = '7b667e8ac19abd6752180a176b6cb401';
 const locationInput = document.getElementById('location-input');
 const searchBtn = document.getElementById('search-btn');
 const settingsBtn = document.getElementById('settings-btn');
@@ -8,9 +6,6 @@ const modal = document.getElementById('settings-modal');
 const saveSettings = document.getElementById('save-settings');
 const tempUnitSelect = document.getElementById('temp-unit');
 const windUnitSelect = document.getElementById('wind-unit');
-const snowChanceDisplay = document.getElementById('snow-chance');
-const snowAnimation = document.getElementById('snow-animation');
-
 let weatherUpdateInterval;
 
 const userPreferences = {
@@ -59,12 +54,6 @@ function updateWeatherUI(data) {
     document.getElementById('weather-icon').src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
     updateTimestamp();
-    
-    // Snow chance calculation
-    const snowChance = calculateSnowChance(temp, data.main.humidity, data.clouds.all);
-    snowChanceDisplay.textContent = `Snow Chance: ${snowChance}%`;
-    createSnowflakes(snowChance);
-    updateSnowMessage(snowChance);
 }
 
 function updateTimestamp() {
@@ -78,72 +67,23 @@ function updateTimestamp() {
     document.getElementById('timestamp').textContent = `Last Updated: ${formattedHours}:${formattedMinutes} ${ampm}`;
 }
 
-// Conversion Functions
 function convertTemp(celsius, unit) {
-    return unit === 'fahrenheit' ? (celsius * 9/5) + 32 : celsius;
+    if (unit === 'fahrenheit') {
+        return (celsius * 9/5) + 32;
+    }
+    return celsius;
 }
 
 function convertWind(kph, unit) {
-    return unit === 'mph' ? kph * 0.621371 : kph;
-}
-
-// Snow-related Functions
-function calculateSnowChance(temp, humidity, precipitation) {
-    let chance = 0;
-    
-    if (temp <= 32) {
-        chance += 40;
-        if (temp >= 20 && temp <= 30) {
-            chance += 20;
-        }
-    } else {
-        chance -= (temp - 32) * 2;
+    if (unit === 'mph') {
+        return kph * 0.621371;
     }
-    
-    if (humidity >= 70) {
-        chance += 20;
-    } else {
-        chance += (humidity / 70) * 20;
-    }
-    
-    chance *= (precipitation / 100);
-    return Math.max(0, Math.min(100, Math.round(chance)));
-}
-
-function createSnowflakes(chance) {
-    snowAnimation.innerHTML = '';
-    const numSnowflakes = Math.floor(chance / 5);
-    
-    for (let i = 0; i < numSnowflakes; i++) {
-        const snowflake = document.createElement('div');
-        snowflake.className = 'snowflake';
-        snowflake.textContent = '❄';
-        snowflake.style.left = `${Math.random() * 100}%`;
-        snowflake.style.animationDuration = `${Math.random() * 2 + 1}s`;
-        snowflake.style.opacity = Math.random();
-        snowAnimation.appendChild(snowflake);
-    }
-}
-
-function updateSnowMessage(chance) {
-    const messages = {
-        80: "Get your snow boots ready!",
-        60: "Good chance of snow!",
-        40: "Snow is possible!",
-        20: "Light snow chance",
-        0: "Snow is unlikely"
-    };
-    
-    const threshold = Object.keys(messages)
-        .sort((a, b) => b - a)
-        .find(key => chance >= key);
-    
-    document.getElementById('snow-message').textContent = messages[threshold];
+    return kph;
 }
 
 // Event Listeners
 searchBtn.addEventListener('click', getWeather);
-locationInput.addEventListener('keypress', e => {
+locationInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') getWeather();
 });
 
@@ -151,7 +91,7 @@ settingsBtn.addEventListener('click', () => {
     modal.style.display = 'block';
 });
 
-window.addEventListener('click', e => {
+window.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.style.display = 'none';
     }
@@ -171,7 +111,7 @@ saveSettings.addEventListener('click', () => {
     modal.style.display = 'none';
 });
 
-// Initialization
+// Initialize settings and default city
 tempUnitSelect.value = userPreferences.tempUnit;
 windUnitSelect.value = userPreferences.windUnit;
 
